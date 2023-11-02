@@ -10,8 +10,8 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/runtime/middleware"
 
-	"github.com/ionSurf/go-swagger-simple-server/src/restapi/operations"
-	"github.com/ionSurf/go-swagger-simple-server/src/restapi/operations/todos"
+	"github.com/ionSurf/go-swagger-simple-server/restapi/operations"
+	"github.com/ionSurf/go-swagger-simple-server/restapi/operations/todos"
 )
 
 //go:generate swagger generate server --target ../../go-swagger --name TodoList --spec ../swagger.yml --principal interface{}

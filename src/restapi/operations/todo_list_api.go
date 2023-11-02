@@ -19,7 +19,7 @@ import (
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 
-	"github.com/ionSurf/go-swagger-simple-server/src/restapi/operations/todos"
+	"github.com/ionSurf/go-swagger-simple-server/restapi/operations/todos"
 )
 
 // NewTodoListAPI creates a new TodoList instance
