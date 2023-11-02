@@ -4,36 +4,18 @@
 ## Build the application from source
 ##
 
-FROM golang:1.21.1 AS build-stage
+FROM golang:1.21.1
 
-WORKDIR /app
+ENV GOBIN $GOPATH/bin
 
-COPY src/go.mod ./
+WORKDIR /go/src/github.com/ionSurf/go-swagger-simple-server
+
+COPY src/. ./
+
 RUN go mod download
 
-COPY src/* ./
+RUN go install ./cmd/todo-list-server
+ENTRYPOINT /go/bin/todo-list-server --port 8090 --host "0.0.0.0"
 
-RUN CGO_ENABLED=0 GOOS=linux go build -o /go-swagger-simple-server
-
-##
-## Run the tests in the container
-##
-
-FROM build-stage AS run-test-stage
-RUN go test -v ./...
-
-##
-## Deploy the application binary into a lean image
-##
-
-FROM gcr.io/distroless/base-debian11 AS build-release-stage
-
-WORKDIR /
-
-COPY --from=build-stage /go-swagger-simple-server /app
-
-EXPOSE 8080
-
-USER nonroot:nonroot
-
-ENTRYPOINT ["/app"]
+# serving HTTP of 8090
+EXPOSE 8090
