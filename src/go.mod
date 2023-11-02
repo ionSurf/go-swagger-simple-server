@@ -1,4 +1,4 @@
-module github.com/ionSurf/go-swagger-simple-server/src
+module github.com/ionSurf/go-swagger-simple-server
 
 go 1.21.1
 
